@@ -113,3 +113,39 @@ const generateToken = (id) => {
     expiresIn: '30d',
   });
 };
+
+// Update user name
+exports.updateUserName = asyncHandler(async (req, res) => {
+  const { name } = req.body;
+
+  // Basic validation
+  if (!name) {
+    res.status(400);
+    throw new Error('Please provide all required fields');
+  }
+
+  // Update user
+  const updatedUser = await User.findByIdAndUpdate(
+    req.user.id,
+    { name: name },
+    { new: true }
+  ).select('-password');
+
+  if (updatedUser) {
+    const user = {
+      id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+    };
+
+    // Send response
+    res.json({
+      message: 'User updated successfully',
+      user: user,
+    });
+  } else {
+    // Failed to update user
+    res.status(500);
+    throw new Error('Failed to update user');
+  }
+});
