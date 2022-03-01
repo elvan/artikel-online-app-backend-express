@@ -8,6 +8,7 @@ const User = require('../models/user');
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30d';
 
 exports.registerUser = asyncHandler(async (req, res) => {
   // Destructure the user object from the request body
@@ -108,12 +109,6 @@ exports.currentUser = (req, res) => {
   });
 };
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, JWT_SECRET, {
-    expiresIn: '30d',
-  });
-};
-
 // Update user name
 exports.updateUserName = asyncHandler(async (req, res) => {
   const { name } = req.body;
@@ -149,3 +144,9 @@ exports.updateUserName = asyncHandler(async (req, res) => {
     throw new Error('Failed to update user');
   }
 });
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, JWT_SECRET, {
+    expiresIn: JWT_EXPIRES_IN,
+  });
+};
