@@ -2,6 +2,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 
 const connectToDatabase = require('./database/connectToDatabase');
+const enableCors = require('./middleware/enableCors');
 const errorHandler = require('./middleware/errorHandler');
 const userRouter = require('./routers/userRouter');
 
@@ -14,6 +15,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(enableCors);
 
 app.use('/api/users', userRouter);
 
