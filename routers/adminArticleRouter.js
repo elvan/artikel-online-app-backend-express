@@ -6,16 +6,17 @@ const {
   adminUpdateArticle,
   adminDeleteArticle,
 } = require('../controllers/adminArticleController');
+const adminGuard = require('../middleware/adminGuard');
 const authGuard = require('../middleware/authGuard');
 
 const router = express.Router();
 
-router.get('/', authGuard, adminListArticles);
+router.get('/', authGuard, adminGuard, adminListArticles);
 
-router.post('/', authGuard, adminCreateArticle);
+router.post('/', authGuard, adminGuard, adminCreateArticle);
 
-router.put('/:id', authGuard, adminUpdateArticle);
+router.put('/:id', authGuard, adminGuard, adminUpdateArticle);
 
-router.delete('/:id', authGuard, adminDeleteArticle);
+router.delete('/:id', authGuard, adminGuard, adminDeleteArticle);
 
 module.exports = router;

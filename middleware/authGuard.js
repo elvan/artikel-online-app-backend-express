@@ -20,7 +20,6 @@ const authGuard = asyncHandler(async (req, res, next) => {
       const user = await User.findById(decoded.id).select('-password');
 
       if (!user) {
-        console.log('User not found');
         res.status(401);
         throw new Error('User not found');
       } else {
