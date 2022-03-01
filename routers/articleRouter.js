@@ -2,16 +2,15 @@ const express = require('express');
 const {
   listArticles,
   getArticle,
-  createArticleComment,
 } = require('../controllers/articleController');
-const authGuard = require('../middleware/authGuard');
+const commentRouter = require('./commentRouter');
 
 const router = express.Router();
 
+router.use('/:articleId/comments', commentRouter);
+
 router.get('/', listArticles);
 
-router.get('/:id', getArticle);
-
-router.post('/:id/comments', authGuard, createArticleComment);
+router.get('/:articleId', getArticle);
 
 module.exports = router;

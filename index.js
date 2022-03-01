@@ -19,9 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(enableCors);
 
-app.use('/api/users', userRouter);
-app.use('/api/articles', articleRouter);
 app.use('/api/admin/articles', adminArticleRouter);
+app.use('/api/articles', articleRouter);
+app.use('/api/users', userRouter);
 
 app.use(errorHandler);
 
