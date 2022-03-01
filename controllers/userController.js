@@ -82,7 +82,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 
   const user = {
-    _id: existingUser._id,
+    id: existingUser._id,
     name: existingUser.name,
     email: existingUser.email,
     token: generateToken(existingUser._id),
@@ -96,13 +96,20 @@ exports.loginUser = asyncHandler(async (req, res) => {
 });
 
 exports.currentUser = (req, res) => {
+  const user = {
+    id: req.user.id,
+    name: req.user.name,
+    email: req.user.email,
+  };
+
   res.json({
-    message: 'Current user',
+    message: 'Fetched current user successfully',
+    user: user,
   });
 };
 
-const generateToken = (userId) => {
-  return jwt.sign({ userId }, JWT_SECRET, {
+const generateToken = (id) => {
+  return jwt.sign({ id }, JWT_SECRET, {
     expiresIn: '30d',
   });
 };
