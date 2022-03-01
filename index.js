@@ -4,6 +4,7 @@ const express = require('express');
 const connectToDatabase = require('./database/connectToDatabase');
 const enableCors = require('./middleware/enableCors');
 const errorHandler = require('./middleware/errorHandler');
+const adminArticleRouter = require('./routers/adminArticleRouter');
 const articleRouter = require('./routers/articleRouter');
 const userRouter = require('./routers/userRouter');
 
@@ -20,6 +21,7 @@ app.use(enableCors);
 
 app.use('/api/users', userRouter);
 app.use('/api/articles', articleRouter);
+app.use('/api/admin/articles', adminArticleRouter);
 
 app.use(errorHandler);
 

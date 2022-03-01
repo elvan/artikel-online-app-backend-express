@@ -12,12 +12,7 @@ exports.listArticles = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     message: 'Fetched articles successfully',
+    articleCount: articles.length,
     articles: articles,
-  });
-});
-
-exports.createArticle = asyncHandler(async (req, res, next) => {
-  res.status(201).json({
-    message: 'Article created successfully',
   });
 });

@@ -12,7 +12,7 @@ const articleSchema = new mongoose.Schema(
       required: [true, 'Please add a title'],
       trim: true,
       minlength: [3, 'Title must be at least 3 characters'],
-      maxlength: [50, 'Title must be less than 50 characters'],
+      maxlength: [100, 'Title must be less than 100 characters'],
     },
     content: {
       type: String,
