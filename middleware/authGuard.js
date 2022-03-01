@@ -22,10 +22,10 @@ const authGuard = asyncHandler(async (req, res, next) => {
       if (!user) {
         res.status(401);
         throw new Error('User not found');
-      } else {
-        req.user = user;
-        next();
       }
+
+      req.user = user;
+      next();
     } catch (error) {
       res.status(401);
       throw new Error(error.message);

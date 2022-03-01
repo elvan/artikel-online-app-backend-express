@@ -20,6 +20,8 @@ const adminGuard = asyncHandler(async (req, res, next) => {
       res.status(401);
       throw new Error('User is not admin');
     }
+
+    next();
   } catch (error) {
     res.status(401);
     throw new Error(error.message);
