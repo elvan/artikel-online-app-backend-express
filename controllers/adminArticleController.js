@@ -1,6 +1,8 @@
 const asyncHandler = require('express-async-handler');
+const mongoose = require('mongoose');
 
 const Article = require('../models/article');
+const Comment = require('../models/comment');
 const User = require('../models/user');
 
 exports.adminListArticles = asyncHandler(async (req, res, next) => {
@@ -31,7 +33,7 @@ exports.adminCreateArticle = asyncHandler(async (req, res, next) => {
 
   if (!user) {
     res.status(401);
-    throw new Error('You are not authorized to perform this action');
+    throw new Error('Invalid user credentials');
   }
 
   const article = await Article.create({
@@ -68,6 +70,11 @@ exports.adminUpdateArticle = asyncHandler(async (req, res, next) => {
 
   if (!user) {
     res.status(401);
+    throw new Error('Invalid user credentials');
+  }
+
+  if (article.author.toString() !== user._id.toString()) {
+    res.status(401);
     throw new Error('You are not authorized to perform this action');
   }
 
@@ -97,10 +104,27 @@ exports.adminDeleteArticle = asyncHandler(async (req, res, next) => {
 
   if (!user) {
     res.status(401);
+    throw new Error('Invalid user credentials');
+  }
+
+  if (article.author.toString() !== user._id.toString()) {
+    res.status(401);
     throw new Error('You are not authorized to perform this action');
   }
 
-  await article.remove();
+  // Transaction
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  try {
+    await article.remove();
+    await Comment.deleteMany({ article: article._id });
+    await session.commitTransaction();
+  } catch (err) {
+    await session.abortTransaction();
+    throw err;
+  } finally {
+    session.endSession();
+  }
 
   res.status(200).json({
     message: 'Article deleted successfully',
