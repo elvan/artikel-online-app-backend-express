@@ -16,3 +16,17 @@ exports.listArticles = asyncHandler(async (req, res, next) => {
     articles: articles,
   });
 });
+
+exports.getArticle = asyncHandler(async (req, res, next) => {
+  const article = await Article.findById(req.params.id);
+
+  if (!article) {
+    res.status(404);
+    throw new Error('Article not found');
+  }
+
+  res.status(200).json({
+    message: 'Fetched article successfully',
+    article: article,
+  });
+});

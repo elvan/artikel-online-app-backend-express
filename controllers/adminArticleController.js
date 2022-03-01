@@ -47,3 +47,61 @@ exports.adminCreateArticle = asyncHandler(async (req, res, next) => {
     article: article,
   });
 });
+
+exports.adminUpdateArticle = asyncHandler(async (req, res, next) => {
+  const article = await Article.findById(req.params.id);
+
+  if (!article) {
+    res.status(404);
+    throw new Error('Article not found');
+  }
+
+  const { title, content, category, status } = req.body;
+
+  // Basic validation
+  if (!title || !content || !category || !status) {
+    res.status(400);
+    throw new Error('Please provide all required fields');
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error('You are not authorized to perform this action');
+  }
+
+  article.title = title;
+  article.content = content;
+  article.category = category;
+  article.status = status;
+
+  await article.save();
+
+  res.status(200).json({
+    message: 'Article updated successfully',
+    article: article,
+  });
+});
+
+exports.adminDeleteArticle = asyncHandler(async (req, res, next) => {
+  const article = await Article.findById(req.params.id);
+
+  if (!article) {
+    res.status(404);
+    throw new Error('Article not found');
+  }
+
+  const user = await User.findById(req.user.id);
+
+  if (!user) {
+    res.status(401);
+    throw new Error('You are not authorized to perform this action');
+  }
+
+  await article.remove();
+
+  res.status(200).json({
+    message: 'Article deleted successfully',
+  });
+});
