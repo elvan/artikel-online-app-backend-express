@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "1dc6a730-620e-40cf-8d26-61d4c7360747",
+		"name": "ArtikelOnline",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Register new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"aaron\",\r\n  \"email\": \"aaron@example.com\",\r\n  \"password\": \"pswd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/register",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log user in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"pswd1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/users/login",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/users/current-user",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users",
+								"current-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user name",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/users",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "articles",
+			"item": [
+				{
+					"name": "List all articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List admin articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/admin/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"admin",
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get an article",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"621df7343d62c757d802201b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new article",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"category\": \"Health\",\r\n  \"title\": \"To a gain, look country\",\r\n  \"content\": \"Like for much and an morning, the wanted respond he but a on what to latter lack god, from the how attention generally, a to his shared wanted but worthy it with loyalty. Fundamental; After felt guest I this hat avoided result, next the tall or attempt. Began helplessly a woke freshlybrewed he up I brilliant. At or of and parents'. Cons, first small of if the day in that decided you links of coast harmonics. Shine. She that and he than first the to of it left don't differences not, poured I basically, state return made follow least school.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/admin/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"admin",
+								"articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update an article",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"category\": \"Business\",\r\n  \"status\": \"Published\",\r\n  \"title\": \"Then me no of school yes\",\r\n  \"content\": \"Duckthemed acknowledge should entirely think was wasn't that and maintain will handpainted, my from belly the return amped and a in the to his space completely and parents or on so is rank where the such both out one systems readers attempt. As and with nice handout arrives his with these, texts our of he up heard production competitive myself acquiesce five it the than in bed the have rank most his problem. Everyone dream. Considerations, but where she understood. Spare how agency keep perhaps beings been poverty the live disguised mainly in willingly be in on leaning two did.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/admin/articles/621df7343d62c757d802201b",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"admin",
+								"articles",
+								"621df7343d62c757d802201b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an article",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/admin/articles/621dff5a9d0408669bd13883",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"admin",
+								"articles",
+								"621dff5a9d0408669bd13883"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "List all article comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"621df7343d62c757d802201b",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"At or of and parents'. Cons, first small of if the day in that decided you links of coast harmonics.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"621df7343d62c757d802201b",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments/621e164c2b2a36d664755593",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"articles",
+								"621df7343d62c757d802201b",
+								"comments",
+								"621e164c2b2a36d664755593"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMWRkYTAxM2I3N2EzYzExNjJlMmE1ZCIsImlhdCI6MTY0NjE0MDI2NywiZXhwIjoxNjQ4NzMyMjY3fQ.xJHiI68JbIOzCBYuG9tYnClb3gxuIhSWS-QCNBe5X6Q",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		}
+	]
+}
