@@ -75,6 +75,7 @@ exports.adminUpdateArticle = asyncHandler(async (req, res, next) => {
   article.content = content;
   article.category = category;
   article.status = status;
+  article.updatedAt = Date.now();
 
   await article.save();
 

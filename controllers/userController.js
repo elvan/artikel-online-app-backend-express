@@ -122,7 +122,7 @@ exports.updateUserName = asyncHandler(async (req, res) => {
   // Update user
   const updatedUser = await User.findByIdAndUpdate(
     req.user.id,
-    { name: name },
+    { name: name, updatedAt: Date.now() },
     { new: true }
   ).select('-password');
 
