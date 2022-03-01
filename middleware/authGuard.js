@@ -8,7 +8,7 @@ dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
 
-exports.authGuard = asyncHandler(async (req, res, next) => {
+const authGuard = asyncHandler(async (req, res, next) => {
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
@@ -36,3 +36,5 @@ exports.authGuard = asyncHandler(async (req, res, next) => {
     throw new Error('Not authorized');
   }
 });
+
+module.exports = authGuard;

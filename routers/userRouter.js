@@ -4,7 +4,7 @@ const {
   loginUser,
   currentUser,
 } = require('../controllers/userController');
-const { authGuard } = require('../middleware/authGuard');
+const authGuard = require('../middleware/authGuard');
 
 const router = express.Router();
 

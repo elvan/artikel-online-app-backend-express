@@ -4,6 +4,7 @@ const express = require('express');
 const connectToDatabase = require('./database/connectToDatabase');
 const enableCors = require('./middleware/enableCors');
 const errorHandler = require('./middleware/errorHandler');
+const articleRouter = require('./routers/articleRouter');
 const userRouter = require('./routers/userRouter');
 
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(enableCors);
 
 app.use('/api/users', userRouter);
+app.use('/api/articles', articleRouter);
 
 app.use(errorHandler);
 
