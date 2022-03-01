@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 const express = require('express');
 
+const userRouter = require('./routers/userRouter');
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
@@ -11,6 +13,8 @@ const MONGODB_SERVER =
 const app = express();
 
 app.use(express.json());
+
+app.use('/api/users', userRouter);
 
 app.get('/api', (req, res) => {
   res.json({ message: 'Hello World!' });
