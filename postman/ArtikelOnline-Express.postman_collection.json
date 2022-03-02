@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "1dc6a730-620e-40cf-8d26-61d4c7360747",
-		"name": "ArtikelOnline",
+		"name": "ArtikelOnline-Express",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -112,7 +112,7 @@
 			"name": "articles",
 			"item": [
 				{
-					"name": "List all articles",
+					"name": "List published articles",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -122,24 +122,6 @@
 								"{{API_URL}}"
 							],
 							"path": [
-								"articles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List admin articles",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{API_URL}}/admin/articles",
-							"host": [
-								"{{API_URL}}"
-							],
-							"path": [
-								"admin",
 								"articles"
 							]
 						}
@@ -159,6 +141,24 @@
 							"path": [
 								"articles",
 								"621df7343d62c757d802201b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List admin articles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_URL}}/admin/articles",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"admin",
+								"articles"
 							]
 						}
 					},
@@ -206,14 +206,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/admin/articles/621df7343d62c757d802201b",
+							"raw": "{{API_URL}}/admin/articles/621dff4f9d0408669bd1387f",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"admin",
 								"articles",
-								"621df7343d62c757d802201b"
+								"621dff4f9d0408669bd1387f"
 							]
 						}
 					},
@@ -225,14 +225,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/admin/articles/621dff5a9d0408669bd13883",
+							"raw": "{{API_URL}}/admin/articles/621dff4f9d0408669bd1387f",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"admin",
 								"articles",
-								"621dff5a9d0408669bd13883"
+								"621dff4f9d0408669bd1387f"
 							]
 						}
 					},
@@ -244,18 +244,18 @@
 			"name": "comments",
 			"item": [
 				{
-					"name": "List all article comment",
+					"name": "List article comments",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments",
+							"raw": "{{API_URL}}/articles/621dff4f9d0408669bd1387f/comments",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"articles",
-								"621df7343d62c757d802201b",
+								"621dff4f9d0408669bd1387f",
 								"comments"
 							]
 						}
@@ -277,13 +277,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments",
+							"raw": "{{API_URL}}/articles/621dff4f9d0408669bd1387f/comments",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"articles",
-								"621df7343d62c757d802201b",
+								"621dff4f9d0408669bd1387f",
 								"comments"
 							]
 						}
@@ -296,15 +296,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{API_URL}}/articles/621df7343d62c757d802201b/comments/621e164c2b2a36d664755593",
+							"raw": "{{API_URL}}/articles/621dff4f9d0408669bd1387f/comments/621e850efd4352ae903e4a2b",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"articles",
-								"621df7343d62c757d802201b",
+								"621dff4f9d0408669bd1387f",
 								"comments",
-								"621e164c2b2a36d664755593"
+								"621e850efd4352ae903e4a2b"
 							]
 						}
 					},
